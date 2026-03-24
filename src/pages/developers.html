@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swearby — Developers</title>
+  <base href="../../">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <div class="page-layout">
+
+    <!-- SIDEBAR NAV -->
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <a href="#components" class="sidebar-link active">
+          <span class="sidebar-number">01</span>
+          <span class="sidebar-title">Components</span>
+        </a>
+        <a href="#code" class="sidebar-link">
+          <span class="sidebar-number">02</span>
+          <span class="sidebar-title">Code</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+
+    <!-- ══════════ UI COMPONENTS ══════════ -->
+    <section id="components">
+      <div class="section-header fade-in">
+        <div class="section-label">01 — Components</div>
+        <h2>UI Components</h2>
+        <p class="section-desc">Live examples of core UI elements. Preview how they look, then copy the code.</p>
+      </div>
+
+      <!-- Buttons -->
+      <h3 class="component-label fade-in">Buttons</h3>
+      <div class="component-showcase fade-in">
+        <div class="component-preview">
+          <button class="btn-primary">Get Started</button>
+          <button class="btn-secondary">Learn More</button>
+          <button class="btn-ghost">Browse All</button>
+          <button class="btn-copper">Urgent Care</button>
+        </div>
+        <div class="component-code">
+          <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+          <pre><span class="s-tag">&lt;button</span> <span class="s-attr">class=</span><span class="s-str">"btn-primary"</span><span class="s-tag">&gt;</span>Get Started<span class="s-tag">&lt;/button&gt;</span>
+<span class="s-tag">&lt;button</span> <span class="s-attr">class=</span><span class="s-str">"btn-secondary"</span><span class="s-tag">&gt;</span>Learn More<span class="s-tag">&lt;/button&gt;</span>
+<span class="s-tag">&lt;button</span> <span class="s-attr">class=</span><span class="s-str">"btn-ghost"</span><span class="s-tag">&gt;</span>Browse All<span class="s-tag">&lt;/button&gt;</span>
+
+<span class="s-tag">&lt;style&gt;</span>
+<span class="s-key">.btn-primary</span> {
+  <span class="s-key">padding</span>: <span class="s-val">12px 28px</span>;
+  <span class="s-key">background</span>: <span class="s-val">#1a3c2a</span>;
+  <span class="s-key">color</span>: <span class="s-val">#F3F5F3</span>;
+  <span class="s-key">border</span>: <span class="s-val">none</span>;
+  <span class="s-key">border-radius</span>: <span class="s-val">12px</span>;
+  <span class="s-key">font-family</span>: <span class="s-str">'DM Sans', sans-serif</span>;
+  <span class="s-key">font-size</span>: <span class="s-val">14px</span>;
+  <span class="s-key">font-weight</span>: <span class="s-val">600</span>;
+  <span class="s-key">cursor</span>: <span class="s-val">pointer</span>;
+  <span class="s-key">transition</span>: <span class="s-val">all 0.2s</span>;
+}
+<span class="s-key">.btn-primary:hover</span> {
+  <span class="s-key">background</span>: <span class="s-val">#0f2418</span>;
+  <span class="s-key">transform</span>: <span class="s-val">translateY(-1px)</span>;
+}
+<span class="s-key">.btn-secondary</span> {
+  <span class="s-key">padding</span>: <span class="s-val">12px 28px</span>;
+  <span class="s-key">background</span>: <span class="s-val">transparent</span>;
+  <span class="s-key">color</span>: <span class="s-val">#1a3c2a</span>;
+  <span class="s-key">border</span>: <span class="s-val">1.5px solid #1a3c2a</span>;
+  <span class="s-key">border-radius</span>: <span class="s-val">12px</span>;
+  <span class="s-key">font-size</span>: <span class="s-val">14px</span>;
+  <span class="s-key">font-weight</span>: <span class="s-val">600</span>;
+}
+<span class="s-key">.btn-secondary:hover</span> {
+  <span class="s-key">background</span>: <span class="s-val">#1a3c2a</span>;
+  <span class="s-key">color</span>: <span class="s-val">#F3F5F3</span>;
+}
+<span class="s-tag">&lt;/style&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <h3 class="component-label fade-in">Badges &amp; Tags</h3>
+      <div class="component-showcase fade-in">
+        <div class="component-preview">
+          <span class="badge badge-forest">Peptides</span>
+          <span class="badge badge-olive">Weight Loss</span>
+          <span class="badge badge-gold">Popular</span>
+          <span class="badge badge-copper">New</span>
+        </div>
+        <div class="component-code">
+          <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+          <pre><span class="s-tag">&lt;span</span> <span class="s-attr">class=</span><span class="s-str">"badge badge-forest"</span><span class="s-tag">&gt;</span>Peptides<span class="s-tag">&lt;/span&gt;</span>
+<span class="s-tag">&lt;span</span> <span class="s-attr">class=</span><span class="s-str">"badge badge-gold"</span><span class="s-tag">&gt;</span>Popular<span class="s-tag">&lt;/span&gt;</span>
+
+<span class="s-tag">&lt;style&gt;</span>
+<span class="s-key">.badge</span> {
+  <span class="s-key">display</span>: <span class="s-val">inline-block</span>;
+  <span class="s-key">padding</span>: <span class="s-val">4px 12px</span>;
+  <span class="s-key">border-radius</span>: <span class="s-val">100px</span>;
+  <span class="s-key">font-size</span>: <span class="s-val">12px</span>;
+  <span class="s-key">font-weight</span>: <span class="s-val">600</span>;
+}
+<span class="s-key">.badge-forest</span> { <span class="s-key">background</span>: <span class="s-val">rgba(26,60,42,0.1)</span>; <span class="s-key">color</span>: <span class="s-val">#1a3c2a</span>; }
+<span class="s-key">.badge-olive</span>  { <span class="s-key">background</span>: <span class="s-val">rgba(70,101,69,0.12)</span>; <span class="s-key">color</span>: <span class="s-val">#1a3c2a</span>; }
+<span class="s-key">.badge-gold</span>   { <span class="s-key">background</span>: <span class="s-val">rgba(196,162,101,0.15)</span>; <span class="s-key">color</span>: <span class="s-val">#8a6d30</span>; }
+<span class="s-key">.badge-copper</span> { <span class="s-key">background</span>: <span class="s-val">rgba(159,84,62,0.15)</span>; <span class="s-key">color</span>: <span class="s-val">#7a3e2a</span>; }
+<span class="s-tag">&lt;/style&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <h3 class="component-label fade-in">Product Card</h3>
+      <div class="component-showcase fade-in">
+        <div class="component-preview sand-bg">
+          <div class="sample-card">
+            <span class="badge badge-gold" style="margin-bottom: 12px;">Popular</span>
+            <div class="sample-card-title">Semaglutide Program</div>
+            <div class="sample-card-text">Clinician-guided weight management with GLP-1 therapy. Includes monthly check-ins.</div>
+            <div class="sample-card-footer">
+              <span class="sample-card-price">$249/mo</span>
+              <button class="btn-primary" style="padding: 8px 20px; font-size: 13px;">View Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="component-code">
+          <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+          <pre><span class="s-tag">&lt;div</span> <span class="s-attr">class=</span><span class="s-str">"product-card"</span><span class="s-tag">&gt;</span>
+  <span class="s-tag">&lt;span</span> <span class="s-attr">class=</span><span class="s-str">"badge badge-gold"</span><span class="s-tag">&gt;</span>Popular<span class="s-tag">&lt;/span&gt;</span>
+  <span class="s-tag">&lt;h3&gt;</span>Semaglutide Program<span class="s-tag">&lt;/h3&gt;</span>
+  <span class="s-tag">&lt;p&gt;</span>Clinician-guided weight management...<span class="s-tag">&lt;/p&gt;</span>
+  <span class="s-tag">&lt;div</span> <span class="s-attr">class=</span><span class="s-str">"card-footer"</span><span class="s-tag">&gt;</span>
+    <span class="s-tag">&lt;span</span> <span class="s-attr">class=</span><span class="s-str">"price"</span><span class="s-tag">&gt;</span>$249/mo<span class="s-tag">&lt;/span&gt;</span>
+    <span class="s-tag">&lt;button</span> <span class="s-attr">class=</span><span class="s-str">"btn-primary"</span><span class="s-tag">&gt;</span>View Details<span class="s-tag">&lt;/button&gt;</span>
+  <span class="s-tag">&lt;/div&gt;</span>
+<span class="s-tag">&lt;/div&gt;</span>
+
+<span class="s-tag">&lt;style&gt;</span>
+<span class="s-key">.product-card</span> {
+  <span class="s-key">background</span>: <span class="s-val">#F3F5F3</span>;
+  <span class="s-key">border-radius</span>: <span class="s-val">16px</span>;
+  <span class="s-key">padding</span>: <span class="s-val">24px</span>;
+  <span class="s-key">box-shadow</span>: <span class="s-val">0 2px 12px rgba(0,0,0,0.06)</span>;
+}
+<span class="s-key">.product-card h3</span> {
+  <span class="s-key">font-family</span>: <span class="s-str">'DM Serif Display', Georgia, serif</span>;
+  <span class="s-key">font-size</span>: <span class="s-val">18px</span>;
+  <span class="s-key">margin</span>: <span class="s-val">12px 0 8px</span>;
+}
+<span class="s-key">.product-card p</span> {
+  <span class="s-key">font-size</span>: <span class="s-val">14px</span>;
+  <span class="s-key">color</span>: <span class="s-val">#5F6D65</span>;
+  <span class="s-key">line-height</span>: <span class="s-val">1.6</span>;
+}
+<span class="s-key">.card-footer</span> {
+  <span class="s-key">display</span>: <span class="s-val">flex</span>;
+  <span class="s-key">align-items</span>: <span class="s-val">center</span>;
+  <span class="s-key">justify-content</span>: <span class="s-val">space-between</span>;
+  <span class="s-key">margin-top</span>: <span class="s-val">16px</span>;
+}
+<span class="s-key">.price</span> { <span class="s-key">font-weight</span>: <span class="s-val">600</span>; <span class="s-key">color</span>: <span class="s-val">#1a3c2a</span>; }
+<span class="s-tag">&lt;/style&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Form Input -->
+      <h3 class="component-label fade-in">Form Elements</h3>
+      <div class="component-showcase fade-in">
+        <div class="component-preview">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label style="font-size: 13px; font-weight: 600; color: var(--charcoal);">Email address</label>
+            <input class="sample-input" type="email" placeholder="you@example.com">
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label style="font-size: 13px; font-weight: 600; color: var(--charcoal);">Referral code</label>
+            <input class="sample-input" type="text" placeholder="SWEARBY-XXXX">
+          </div>
+        </div>
+        <div class="component-code">
+          <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+          <pre><span class="s-tag">&lt;style&gt;</span>
+<span class="s-key">input, select, textarea</span> {
+  <span class="s-key">padding</span>: <span class="s-val">12px 16px</span>;
+  <span class="s-key">border</span>: <span class="s-val">1.5px solid #cdc7b7</span>;
+  <span class="s-key">border-radius</span>: <span class="s-val">12px</span>;
+  <span class="s-key">font-family</span>: <span class="s-str">'DM Sans', sans-serif</span>;
+  <span class="s-key">font-size</span>: <span class="s-val">14px</span>;
+  <span class="s-key">background</span>: <span class="s-val">#F3F5F3</span>;
+  <span class="s-key">color</span>: <span class="s-val">#2c2c2c</span>;
+  <span class="s-key">transition</span>: <span class="s-val">all 0.2s</span>;
+  <span class="s-key">outline</span>: <span class="s-val">none</span>;
+}
+<span class="s-key">input:focus</span> {
+  <span class="s-key">border-color</span>: <span class="s-val">#466545</span>;
+  <span class="s-key">box-shadow</span>: <span class="s-val">0 0 0 3px rgba(70,101,69,0.15)</span>;
+}
+<span class="s-key">input::placeholder</span> { <span class="s-key">color</span>: <span class="s-val">#8a8a8a</span>; }
+
+<span class="s-key">label</span> {
+  <span class="s-key">font-size</span>: <span class="s-val">13px</span>;
+  <span class="s-key">font-weight</span>: <span class="s-val">600</span>;
+  <span class="s-key">color</span>: <span class="s-val">#2c2c2c</span>;
+}
+<span class="s-tag">&lt;/style&gt;</span></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ CODE SNIPPETS ══════════ -->
+    <section id="code">
+      <div class="section-header fade-in">
+        <div class="section-label">02 — Code</div>
+        <h2>Developer Reference</h2>
+        <p class="section-desc">Copy-ready code snippets for integrating the Swearby brand into your codebase.</p>
+      </div>
+
+      <!-- CSS Variables -->
+      <div class="snippet-card fade-in">
+        <div class="snippet-header">
+          <span class="snippet-title">CSS Custom Properties</span>
+          <span class="snippet-lang">CSS</span>
+        </div>
+        <div class="snippet-body">
+          <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+          <pre><span class="s-comment">/* Swearby Design Tokens */</span>
+<span class="s-key">:root</span> {
+  <span class="s-comment">/* Brand */</span>
+  <span class="s-key">--swearby-forest</span>: <span class="s-val">#1a3c2a</span>;  <span class="s-comment">/* rgb(26, 60, 42) */</span>
+  <span class="s-key">--swearby-olive</span>: <span class="s-val">#466545</span>;  <span class="s-comment">/* rgb(70, 101, 69) */</span>
+  <span class="s-key">--swearby-sand</span>: <span class="s-val">#ddd8ca</span>;  <span class="s-comment">/* rgb(221, 216, 202) */</span>
+
+  <span class="s-comment">/* UI */</span>
+  <span class="s-key">--swearby-ash</span>: <span class="s-val">#5F6D65</span>;  <span class="s-comment">/* rgb(95, 109, 101) */</span>
+  <span class="s-key">--swearby-charcoal</span>: <span class="s-val">#2c2c2c</span>;  <span class="s-comment">/* rgb(44, 44, 44) */</span>
+  <span class="s-key">--swearby-chalk</span>: <span class="s-val">#F3F5F3</span>;  <span class="s-comment">/* rgb(243, 245, 243) */</span>
+  <span class="s-key">--swearby-gold</span>: <span class="s-val">#c4a265</span>;  <span class="s-comment">/* rgb(196, 162, 101) */</span>
+  <span class="s-key">--swearby-copper</span>: <span class="s-val">#9f543e</span>;  <span class="s-comment">/* rgb(159, 84, 62) */</span>
+
+  <span class="s-comment">/* Typography */</span>
+  <span class="s-key">--swearby-font-display</span>: <span class="s-val">'DM Serif Display', Georgia, serif</span>;
+  <span class="s-key">--swearby-font-body</span>: <span class="s-val">'DM Sans', -apple-system, sans-serif</span>;
+  <span class="s-key">--swearby-font-mono</span>: <span class="s-val">'JetBrains Mono', monospace</span>;
+
+  <span class="s-comment">/* Radii */</span>
+  <span class="s-key">--swearby-radius-sm</span>: <span class="s-val">8px</span>;
+  <span class="s-key">--swearby-radius-md</span>: <span class="s-val">12px</span>;
+  <span class="s-key">--swearby-radius-lg</span>: <span class="s-val">16px</span>;
+}</pre>
+        </div>
+      </div>
+
+      <!-- HTML Head -->
+      <div class="snippet-card fade-in">
+        <div class="snippet-header">
+          <span class="snippet-title">HTML Head Setup</span>
+          <span class="snippet-lang">HTML</span>
+        </div>
+        <div class="snippet-body">
+          <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+          <pre><span class="s-comment">&lt;!-- Fonts --&gt;</span>
+<span class="s-tag">&lt;link</span> <span class="s-attr">rel=</span><span class="s-str">"preconnect"</span> <span class="s-attr">href=</span><span class="s-str">"https://fonts.googleapis.com"</span><span class="s-tag">&gt;</span>
+<span class="s-tag">&lt;link</span> <span class="s-attr">rel=</span><span class="s-str">"preconnect"</span> <span class="s-attr">href=</span><span class="s-str">"https://fonts.gstatic.com"</span> <span class="s-attr">crossorigin</span><span class="s-tag">&gt;</span>
+<span class="s-tag">&lt;link</span> <span class="s-attr">href=</span><span class="s-str">"https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap"</span> <span class="s-attr">rel=</span><span class="s-str">"stylesheet"</span><span class="s-tag">&gt;</span>
+
+<span class="s-comment">&lt;!-- Favicons --&gt;</span>
+<span class="s-tag">&lt;link</span> <span class="s-attr">rel=</span><span class="s-str">"icon"</span> <span class="s-attr">type=</span><span class="s-str">"image/png"</span> <span class="s-attr">sizes=</span><span class="s-str">"32x32"</span> <span class="s-attr">href=</span><span class="s-str">"/favicon-32x32.png"</span><span class="s-tag">&gt;</span>
+<span class="s-tag">&lt;link</span> <span class="s-attr">rel=</span><span class="s-str">"apple-touch-icon"</span> <span class="s-attr">href=</span><span class="s-str">"/apple-touch-icon.png"</span><span class="s-tag">&gt;</span>
+
+<span class="s-comment">&lt;!-- Theme color for mobile browsers --&gt;</span>
+<span class="s-tag">&lt;meta</span> <span class="s-attr">name=</span><span class="s-str">"theme-color"</span> <span class="s-attr">content=</span><span class="s-str">"#1a3c2a"</span><span class="s-tag">&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Tailwind Config -->
+      <div class="snippet-card fade-in">
+        <div class="snippet-header">
+          <span class="snippet-title">Tailwind CSS Config</span>
+          <span class="snippet-lang">JavaScript</span>
+        </div>
+        <div class="snippet-body">
+          <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+          <pre><span class="s-comment">// tailwind.config.js</span>
+module.exports = {
+  theme: {
+    extend: {
+      <span class="s-key">colors</span>: {
+        <span class="s-comment">// Brand</span>
+        <span class="s-key">forest</span>: <span class="s-str">'#1a3c2a'</span>,
+        <span class="s-key">olive</span>: <span class="s-str">'#466545'</span>,
+        <span class="s-key">sand</span>: <span class="s-str">'#ddd8ca'</span>,
+        <span class="s-comment">// UI</span>
+        <span class="s-key">ash</span>: <span class="s-str">'#5F6D65'</span>,
+        <span class="s-key">charcoal</span>: <span class="s-str">'#2c2c2c'</span>,
+        <span class="s-key">chalk</span>: <span class="s-str">'#F3F5F3'</span>,
+        <span class="s-key">gold</span>: <span class="s-str">'#c4a265'</span>,
+        <span class="s-key">copper</span>: <span class="s-str">'#9f543e'</span>,
+      },
+      <span class="s-key">fontFamily</span>: {
+        <span class="s-key">display</span>: [<span class="s-str">'DM Serif Display'</span>, <span class="s-str">'Georgia'</span>, <span class="s-str">'serif'</span>],
+        <span class="s-key">body</span>: [<span class="s-str">'DM Sans'</span>, <span class="s-str">'-apple-system'</span>, <span class="s-str">'sans-serif'</span>],
+      },
+      <span class="s-key">borderRadius</span>: {
+        <span class="s-key">'swearby'</span>: <span class="s-str">'12px'</span>,
+        <span class="s-key">'swearby-lg'</span>: <span class="s-str">'16px'</span>,
+      },
+    },
+  },
+}</pre>
+        </div>
+      </div>
+
+      <!-- React/JS Tokens -->
+      <div class="snippet-card fade-in">
+        <div class="snippet-header">
+          <span class="snippet-title">JavaScript / React Tokens</span>
+          <span class="snippet-lang">TypeScript</span>
+        </div>
+        <div class="snippet-body">
+          <button class="copy-btn" onclick="copySnippet(this)">Copy</button>
+          <pre><span class="s-comment">// swearby-tokens.ts</span>
+export <span class="s-key">const</span> colors = {
+  <span class="s-comment">// Brand</span>
+  <span class="s-key">forest</span>: <span class="s-str">'#1a3c2a'</span>,
+  <span class="s-key">olive</span>: <span class="s-str">'#466545'</span>,
+  <span class="s-key">sand</span>: <span class="s-str">'#ddd8ca'</span>,
+  <span class="s-comment">// UI</span>
+  <span class="s-key">ash</span>: <span class="s-str">'#5F6D65'</span>,
+  <span class="s-key">charcoal</span>: <span class="s-str">'#2c2c2c'</span>,
+  <span class="s-key">chalk</span>: <span class="s-str">'#F3F5F3'</span>,
+  <span class="s-key">gold</span>: <span class="s-str">'#c4a265'</span>,
+  <span class="s-key">copper</span>: <span class="s-str">'#9f543e'</span>,
+} <span class="s-key">as const</span>;
+
+export <span class="s-key">const</span> fonts = {
+  <span class="s-key">display</span>: <span class="s-str">"'DM Serif Display', Georgia, serif"</span>,
+  <span class="s-key">body</span>: <span class="s-str">"'DM Sans', -apple-system, sans-serif"</span>,
+  <span class="s-key">mono</span>: <span class="s-str">"'JetBrains Mono', monospace"</span>,
+} <span class="s-key">as const</span>;</pre>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-stripes">
+      <img src="src/assets/icons/postal stripes/postal stripes - forest.png" alt="">
+    </div>
+    <img src="src/assets/logos/wordmark/forest-motif.png" alt="swearbyhealth" class="footer-logo-img">
+    <div class="footer-text">Brand Kit — March 2026 · Built for the team that swears by it.</div>
+  </div>
+
+  <script src="src/js/main.js"></script>
+
+</body>
+</html>

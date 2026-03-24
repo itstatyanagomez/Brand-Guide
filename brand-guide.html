@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swearby Health — Brand Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/styles.css">
+  <style>
+    /* Shell-level nav styles */
+    .shell-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(243,245,243,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(44,44,44,0.08);
+      padding: 0 40px;
+    }
+    .shell-nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      height: 56px;
+    }
+    .shell-nav-brand {
+      margin-right: 40px;
+      flex-shrink: 0;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .shell-nav-brand img {
+      height: 24px;
+      width: auto;
+    }
+    .shell-nav-links {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+    }
+    .shell-nav-links a {
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ash);
+      padding: 6px 14px;
+      border-radius: 100px;
+      transition: all 0.2s;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .shell-nav-links a:hover {
+      color: var(--forest);
+      background: rgba(26,60,42,0.06);
+    }
+    .shell-nav-links a.active {
+      color: var(--forest);
+      background: rgba(26,60,42,0.08);
+      font-weight: 600;
+    }
+
+    /* Page content area */
+    #page-content {
+      min-height: calc(100vh - 56px);
+    }
+
+    /* Loading state */
+    .page-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      color: var(--ash);
+      font-size: 14px;
+    }
+
+    /* Coming soon placeholder */
+    .coming-soon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      text-align: center;
+      padding: 40px;
+    }
+    .coming-soon h2 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+    .coming-soon p {
+      color: var(--ash);
+      font-size: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .shell-nav { padding: 0 16px; }
+      .shell-nav-brand { margin-right: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MAIN NAV -->
+  <nav class="shell-nav">
+    <div class="shell-nav-inner">
+      <a href="#" class="shell-nav-brand">
+        <img src="src/assets/logos/wordmark/forest.png" alt="swearbyhealth">
+      </a>
+      <ul class="shell-nav-links">
+        <li><a data-page="design" class="active">Design</a></li>
+        <li><a data-page="voice">Voice</a></li>
+        <li><a data-page="developers">Developers</a></li>
+        <li><a data-page="downloads">Downloads</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE CONTENT -->
+  <div id="page-content">
+    <div class="page-loading">Loading...</div>
+  </div>
+
+  <script>
+    const pageContent = document.getElementById('page-content');
+    const navLinks = document.querySelectorAll('.shell-nav-links a');
+
+    // Pages that exist vs coming soon
+    const availablePages = ['design', 'developers', 'downloads'];
+    let currentPage = null;
+
+    async function loadPage(pageName) {
+      currentPage = pageName;
+      // Update nav active state
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.dataset.page === pageName);
+      });
+
+      // Coming soon for pages not yet built
+      if (!availablePages.includes(pageName)) {
+        pageContent.innerHTML = `
+          <div class="coming-soon">
+            <h2>${pageName.charAt(0).toUpperCase() + pageName.slice(1)}</h2>
+            <p>This section is coming soon.</p>
+          </div>
+        `;
+        window.scrollTo(0, 0);
+        return;
+      }
+
+      // Show loading
+      pageContent.innerHTML = '<div class="page-loading">Loading...</div>';
+
+      try {
+        const res = await fetch('src/pages/' + pageName + '.html');
+        const html = await res.text();
+
+        // Parse the page HTML and extract just the <body> content
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const body = doc.body;
+
+        // Remove the page-level nav (shell handles it) and any script/link tags
+        const pageNav = body.querySelector('.nav');
+        if (pageNav) pageNav.remove();
+
+        pageContent.innerHTML = body.innerHTML;
+
+        // Execute any inline scripts from the loaded page
+        const scripts = pageContent.querySelectorAll('script');
+        scripts.forEach(oldScript => {
+          const newScript = document.createElement('script');
+          if (oldScript.src) {
+            // For external scripts, adjust path
+            newScript.src = oldScript.src;
+          } else {
+            newScript.textContent = oldScript.textContent;
+          }
+          oldScript.replaceWith(newScript);
+        });
+
+        // Re-initialize fade-in animations for injected content
+        requestAnimationFrame(() => {
+          const fadeEls = pageContent.querySelectorAll('.fade-in');
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+              }
+            });
+          }, { threshold: 0.05 });
+          fadeEls.forEach(el => observer.observe(el));
+
+          // Re-initialize sidebar scroll tracking
+          const sections = pageContent.querySelectorAll('section[id]');
+          const sidebarLinks = pageContent.querySelectorAll('.sidebar-link');
+          if (sidebarLinks.length) {
+            window.addEventListener('scroll', function sidebarTracker() {
+              let current = '';
+              sections.forEach(section => {
+                if (window.scrollY >= section.offsetTop - 120) {
+                  current = section.getAttribute('id');
+                }
+              });
+              sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                  link.classList.add('active');
+                }
+              });
+            });
+          }
+
+          // Re-initialize lightbox for injected content
+          if (typeof initLightbox === 'function') initLightbox();
+        });
+
+        window.scrollTo(0, 0);
+      } catch (err) {
+        pageContent.innerHTML = `
+          <div class="coming-soon">
+            <h2>Error</h2>
+            <p>Could not load page.</p>
+          </div>
+        `;
+      }
+    }
+
+    // Valid page names
+    const pageNames = ['design', 'voice', 'developers'];
+
+    // Nav click handlers
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const page = link.dataset.page;
+        loadPage(page);
+        history.pushState({ page }, '', '#page=' + page);
+      });
+    });
+
+    // Handle back/forward — only react to page-level changes
+    window.addEventListener('popstate', (e) => {
+      if (e.state && e.state.page) {
+        loadPage(e.state.page);
+      }
+    });
+
+    function getPageFromHash() {
+      const match = location.hash.match(/^#page=(\w+)/);
+      return (match && pageNames.includes(match[1])) ? match[1] : 'design';
+    }
+
+    // Load initial page
+    loadPage(getPageFromHash());
+  </script>
+
+</body>
+</html>
